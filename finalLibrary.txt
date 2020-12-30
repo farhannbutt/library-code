@@ -1,0 +1,156 @@
+   class library{
+    
+   
+    public String  title;
+    public String loan;
+    public String date;
+    public String ID;
+    public String author;
+   
+    
+        public String getInfo (){
+       String out =( title +"\t"+"\t"+"\t"+author+"\t"+"\t"+"\t"+ID+"\t"+"\t"+"\t"+loan+"\t"+"\t"+"\t"+date);
+       return out;
+}
+}
+
+public class books extends library{
+    
+     
+    public books(String bookname,String bookauthor ,String bookLoan,String bookDate, String BookID){
+      
+         title = bookname;
+        author = bookauthor;
+        loan = bookLoan;
+        ID = BookID;
+        date = bookDate;
+    }
+   
+}
+
+public class DVDs extends library{
+ 
+    public DVDs(String DVDname, String DVDpublisher,String DVDloan, String DVDdate, String DVDID ){
+       title= DVDname;
+       author = DVDpublisher;
+       ID = DVDID;
+       loan = DVDloan;
+       date = DVDdate;
+       
+    }
+    
+}
+
+public class CDs extends library{
+   
+    public CDs(String CDname, String CDartist ,String CDloan,String CDdate,String CDID){
+       title = CDname;
+        author = CDartist;
+        loan = CDloan;
+        date = CDdate;
+        ID = CDID;
+    }
+    
+    
+}
+
+public class mags extends library{
+
+    public mags (String Magazinename, String Magazinepublisher,String magLoan, String magDate, String MagazineID){
+        title = Magazinename;
+        author = Magazinepublisher;
+        ID = MagazineID;
+        loan = magLoan;
+        date = magDate;
+    }
+   
+    
+}
+
+
+import java.io.*;
+class tester extends library {
+        library[] myLibrary;
+        public tester(){
+        myLibrary= new library[]{
+            new books("Harry Potter","  Rowlinng  ","    Yes     "," 12/11/2020 ","   AB1000   "),
+            new books("Percy Jackxx","  Salaaroo  ","    Yes     "," 12/12/2020 ","   AB2000   "),
+            new books("Sell serhant","  RyanTika  ","    Yes     "," 10/10/2021 ","   AB3000   "),
+            new books("Game coolios","  Georgina  ","     NO     "," ---------- ","   AB4000   "),
+            new books("Red and red ","  Stendhal  ","     NO     "," ---------- ","   AB5000   "),
+            new CDs  ("Written Star","  NellyKhan ","    Yes     "," 12/12/2021 ","   CD1000   "),
+            new CDs  ("reign genzzx","  PitbullX  ","    Yes     "," 26/11/2020 ","   CD2000   "),
+            new CDs  ("Kiesha Becky","  MoRafayy  ","     No     "," 28/10/2020 ","   CD3000   "),
+            new CDs  ("Man on moon3","  Shahmeer  ","     No     "," -----------","   CD4000   "),
+            new CDs  ("Scorpian Kin","  AhsanSKRT ","    yes     "," 22/12/2021 ","   CD5000   "),
+            new DVDs ("BatmanDarkk2","  MuhamUmar ","    yes     "," 12/10/2021 ","   DVD1000  "),
+            new DVDs ("Avengers BHK","  MarvelAK  ","    Yes     "," 19/10/2021 ","   DVD2000  "),
+            new DVDs ("conjuring AV","  Farhan B  ","     No     "," -----------","   DVD3000  "),
+            new DVDs ("Shutter isb1","  HussainR  ","     No     "," -----------","   DVD4000  "),
+            new DVDs ("Rush hour TJ","  Ross Khn  ","     No     "," -----------","   DVD5000  "),
+            new mags ("Discovery ch","  Rupert A  ","    Yes     "," 14/11/2021 ","   MG1000   "),
+            new mags ("Discovery2 F","  Shamil K  ","    Yes     "," 20/11/2021 ","   MG2000   "),
+            new mags ("GoodHouseman","  cfHearst  ","     No     "," -----------","   MG3000   "),
+            new mags ("Fashion Nova","  MEredith  ","     No     "," -----------","   MG4000   "),
+            new mags ("game informr","  Gamestop  ","     No     "," -----------","   MG5000   ")
+        };
+    
+            
+    
+    } 
+               public void PrintReport(){
+                   
+                   System.out.println("Name" +"\t"+"\t"+"\t"+ " Author/Publisher" +"\t"+"\t"+"\t"+ "Library Id" +"\t"+"\t"+"\t"+ "Item on loan?" +"\t"+"\t"+"\t"+ "Return Date");
+ 
+                   for(int i = 0; i <20;i++){
+                       if(i==0){
+                           System.out.println("BOOKS");
+                        }
+                        if(i==5){
+                           System.out.println("CDs");
+                        }
+                        if(i==10){
+                           System.out.println("DVDs");
+                        }
+                        if(i==15){
+                           System.out.println("MAGAZINEs");
+                        }
+                       
+                       System.out.println(myLibrary[i].getInfo());
+                    }
+   
+                        int Total= myLibrary.length;
+                        System.out.println("Total: " + Total + "items");
+                    }
+                    
+              public void saveReport() throws FileNotFoundException{
+                   PrintWriter output=new PrintWriter("myReport.txt");
+                   output.println("Name" +"\t"+"\t"+"\t"+ " Author/Publisher" +"\t"+"\t"+"\t"+ "Library Id" +"\t"+"\t"+"\t"+ "Item on loan?" +"\t"+"\t"+"\t"+ "Return Date");
+ 
+                   for(int i = 0; i <20;i++){
+                       if(i==0){
+                          output.println("BOOKS");
+                        }
+                       if(i==5){
+                          output.println("CDs");
+                        }
+                       if(i==10){
+                           output.println("DVDs");
+                        }
+                       if(i==15){
+                           output.println("MAGAZINEs");
+                        }
+                       output.println(myLibrary[i].getInfo());
+                    }
+   
+                        int Total= myLibrary.length;
+                        output.println("Total: " + Total + "items");
+                        output.flush();
+                        output.close();
+                       
+                    }
+              
+ 
+                       
+                }
+            
